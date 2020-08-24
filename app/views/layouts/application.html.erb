@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <div class="user_nav">
+      <% if user_signed_in? %>
+        signed in as <%= current_user.email %> Not you <%= link_to "sign_out",destroy_user_session_path%>
+      <% else %>
+        <%= link_to "sign In",new_user_session_path%> Or <%= link_to "sign_up",new_user_registration_path%>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
