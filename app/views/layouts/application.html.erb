@@ -11,6 +11,7 @@
 
   <body>
     <div class="user_nav">
+      <%= link_to "Home",root_path%>
       <% if user_signed_in? %>
         signed in as <%= current_user.email %> Not you <%= link_to "sign_out",destroy_user_session_path%>
       <% else %>

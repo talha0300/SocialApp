@@ -1,7 +1,3 @@
-<h1>Welcome to My App </h1>
-<p>Social Media App</p>
-
-
 <% if @post %>
 <%= link_to 'My Posts', @post%>
 
@@ -14,5 +10,5 @@
     </div>
     <%= f.submit :post, class: 'btn btn-primary'%>
   <% end %>
-  <%= render 'posts/table' %>
+  
 <% end %>
