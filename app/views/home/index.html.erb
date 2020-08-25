@@ -1,10 +1,13 @@
 <h1>Welcome to My App </h1>
-<p>Social Media App</p>
+
 
 
 <% if @post %>
-<%= link_to 'My Posts', @post%>
+<%= link_to 'My Posts', @post,:type => "button", :class => "btn btn-primary btn-sm", :style => ''%>
+<div class="" style="padding-top: 50px;">
 
+</div>
+  <!--
   <%= form_for(@post) do |f| %>
     <div class="form-group">
       <%= f.label 'Update status' %><br>
@@ -14,5 +17,11 @@
     </div>
     <%= f.submit :post, class: 'btn btn-primary'%>
   <% end %>
-  <%= render 'posts/table' %>
+  -->
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info">
+      <%= msg %>
+    </div>
+  <% end %>
+  <%= render 'posts/posts' %>
 <% end %>

@@ -28,6 +28,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params) do |post|
       post.user = current_user
+      post.attachment=""
     end
     #debugger
     if @post.save
@@ -87,6 +88,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:content, :attachment, :user_id)
+      params.require(:post).permit(:content, :image, :user_id)
     end
 end

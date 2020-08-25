@@ -10,14 +10,15 @@
   </head>
 
   <body>
-    <div class="user_nav">
-      <%= link_to "Home",root_path%>
+    <div class="navbar navbar-default">
+      <%= link_to "Home",root_path,:type => "button", :class => "btn btn-primary btn-sm"%>
       <% if user_signed_in? %>
-        signed in as <%= current_user.email %> Not you <%= link_to "sign_out",destroy_user_session_path%>
+        signed in as <%= current_user.email %> Not you <%= link_to "sign_out",destroy_user_session_path,:type => "button", :class => "btn btn-primary btn-sm"%>
       <% else %>
-        <%= link_to "sign In",new_user_session_path%> Or <%= link_to "sign_up",new_user_registration_path%>
+        <%= link_to "sign In",new_user_session_path, :type => "button", :class => "btn btn-primary btn-sm"%> Or <%= link_to "sign_up",new_user_registration_path,:type => "button", :class => "btn btn-primary btn-sm"%>
       <% end %>
     </div>
+
     <%= yield %>
   </body>
 </html>
