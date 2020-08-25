@@ -6,7 +6,7 @@
 </p>
 
 <p>
-  <strong>Cmmment:</strong>
+  <strong>Content:</strong>
   <%= @post.content %>
 </p>
 
@@ -14,6 +14,26 @@
   <strong>User:</strong>
   <%= @post.user %>
 </p>
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
 
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+    <% if current_user[:id]===comment[:user_id]%>
+
+    <%= link_to 'Destroy Comment', [comment.post, comment],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
+    
+
+    <% end %>
+  </p>
+
+
+<% end %>
+
+<p><%= link_to "Add Comment", new_post_comment_path(@post) %></p>
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

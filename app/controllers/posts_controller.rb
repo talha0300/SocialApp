@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user! 
+  before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_posts, only: [:index]
   # GET /posts
@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params) do |post|
       post.user = current_user
     end
+    #debugger
     if @post.save
       redirect_to root_path
     else

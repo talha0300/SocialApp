@@ -1,0 +1,24 @@
+<p>
+  <strong>Content:</strong>
+  <%= @Post.content %>
+</p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= @post.attachment %>
+</p>
+
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<%= render 'add_comment' %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', post_path %>
