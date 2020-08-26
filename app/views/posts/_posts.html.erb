@@ -1,11 +1,14 @@
 
 <div class="container">
   <% @posts.each do |post| %>
-    <div class="row" style="background-color:lightcyan;">
+    <section>
+
+
+    <div class="row" style="background-color:lightcyan;" id="row">
       <div class="col-xs-2"></div>
       <div class="col-xs-8">
         <figure class="figure">
-        <%= image_tag(post.image,:class => "figure-img img-fluid z-depth-1",:style => "max-width: 700px;")%>
+        <%= link_to image_tag(post.image,:class => "figure-img img-fluid z-depth-1",:style => "max-width: 700px;"),post_path(post)%>
         <figcaption class="figure-caption" style="max-width: 400px"><%= post.content %></figcaption>
         <figcaption class="figure-caption text-right"><strong>Created BY:</strong><%= post.user.email %></figcaption>
         <figcaption class="figure-caption">
@@ -36,6 +39,11 @@
     <br />
     <%@post=post%>
     <%= render 'comments/comments' %>
+
+    <%if post.user.email===current_user.email%>
+      <%= render 'posts/posts_links',cont: temp  %>
+    <%end%>
+    </section>
     <br />
   <% end %>
 
