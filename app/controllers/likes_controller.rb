@@ -27,6 +27,12 @@ class LikesController < ApplicationController
     else
         flash[:error] = "An error prevented you from upvoting."
     end
+
+    #respond_to do |format|
+      #format.js
+      #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      #format.json { head :no_content }
+    #end
     #redirect_to root_path
     redirect_to session.delete(:return_to)
     #render session.delete(:return_to)

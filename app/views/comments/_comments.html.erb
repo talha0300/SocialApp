@@ -1,6 +1,10 @@
 <div class="container">
   <h2>Comments</h2>
   <% @post.comments.each do |comment| %>
+
+  <section>
+
+
   <div class="row" style="background-color:lightcyan;">
 
     <div class="col-xs-2"></div>
@@ -20,12 +24,13 @@
 
       <%= link_to 'Destroy Comment', [comment.post, comment],
                    method: :delete,
-                   data: { confirm: 'Are you sure?' } %>
+                   data: { confirm: 'Are you sure?' },:class => "delete" ,remote:true%>
     <% end %>
     </div>
 
     <div class="col-xs-2"></div>
   </div>
+  </section>
   <% end %>
 
 </div>

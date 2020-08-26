@@ -1,0 +1,5 @@
+$('#like').bind('ajax:success',function() {
+  $(this).closest('div').find('span').html(<%= "#{@post.likes.count}" %>);
+
+  console.log("here");
+});

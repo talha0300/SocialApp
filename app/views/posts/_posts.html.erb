@@ -20,8 +20,8 @@
               <%= link_to "Comments", post_path(post), :type => "button", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px'%>
             </div>
             <div class="">
-              <%= link_to "Like", post_likes_path(post, :action => 1), method: :post, :type => "button", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px',remote: true%>
-              <%= "#{post.likes.count}" %>
+              <%= link_to "Like", post_likes_path(post, :action => 1), method: :post, :type => "button",:id => "like", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px'%>
+              <span><%= "#{post.likes.count}" %></span>
             </div>
 
           </div>
