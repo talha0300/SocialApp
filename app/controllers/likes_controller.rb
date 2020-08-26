@@ -18,6 +18,7 @@ class LikesController < ApplicationController
 =end
 
   def create
+    session[:return_to] ||= request.referer
     @post = Post.find(params[:post_id])
     if @post.likes.where(user: current_user.id).present?
         flash[:error] = "You've already upvoted this!"
@@ -26,7 +27,9 @@ class LikesController < ApplicationController
     else
         flash[:error] = "An error prevented you from upvoting."
     end
-    redirect_to root_path
+    #redirect_to root_path
+    redirect_to session.delete(:return_to)
+    #render session.delete(:return_to)
   end
 
   private

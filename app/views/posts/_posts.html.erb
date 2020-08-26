@@ -7,7 +7,7 @@
         <figure class="figure">
         <%= image_tag(post.image,:class => "figure-img img-fluid z-depth-1",:style => "max-width: 700px;")%>
         <figcaption class="figure-caption" style="max-width: 400px"><%= post.content %></figcaption>
-        <figcaption class="figure-caption text-right"><strong>Created BY:</strong><%= current_user.email %></figcaption>
+        <figcaption class="figure-caption text-right"><strong>Created BY:</strong><%= post.user.email %></figcaption>
         <figcaption class="figure-caption">
           <div class="d-flex justify-content-around" style="display: flex;flex-direction: row;justify-content: space-around">
             <div>
@@ -17,7 +17,7 @@
               <%= link_to "Comments", post_path(post), :type => "button", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px'%>
             </div>
             <div class="">
-              <%= link_to "Like", post_likes_path(post, :action => 1), method: :post , :type => "button", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px'%>
+              <%= link_to "Like", post_likes_path(post, :action => 1), method: :post, :type => "button", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px',remote: true%>
               <%= "#{post.likes.count}" %>
             </div>
 
@@ -33,6 +33,10 @@
     <div class="row" style="background-color:lightcyan;">
 
     </div>
+    <br />
+    <%@post=post%>
+    <%= render 'comments/comments' %>
+    <br />
   <% end %>
 
 </div>

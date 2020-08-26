@@ -18,10 +18,12 @@
     <%= f.submit :post, class: 'btn btn-primary'%>
   <% end %>
   -->
+  
   <% flash.each do |type, msg| %>
     <div class="alert alert-info">
       <%= msg %>
     </div>
   <% end %>
+
   <%= render 'posts/posts' %>
 <% end %>
