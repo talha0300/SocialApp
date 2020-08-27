@@ -1,0 +1,8 @@
+$('.btn').bind('ajax:success',function() {
+  //var check= <%=j link_to "Like",posts_path%>
+  $(this).closest('div').find('span').html(<%= "#{@post.likes.count}" %>);
+  $(this).closest('div').find('a').html("Like");
+  $(this).attr("href", "posts/" + <%= "#{@post.id}" %>+"/likes")
+  $(this).attr("data-method","post")
+  //console.log(var);
+});

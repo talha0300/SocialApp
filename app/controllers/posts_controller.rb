@@ -12,6 +12,8 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @posts=Post.find(params[:id])
+    @check=@posts.likes.exists?(:user_id => current_user[:id])
+    #debugger
     @posts=[@posts]
   end
 
@@ -34,9 +36,9 @@ class PostsController < ApplicationController
     end
     #debugger
     if @post.save
-      redirect_to root_path
+      redirect_to post_path(@post)
     else
-      redirect_to root_path, notice: @post.errors.full_messages.first
+      render "new", notice: @post.errors.full_messages.first
     end
   end
 =begin
@@ -61,7 +63,9 @@ class PostsController < ApplicationController
 
     #respond_to do |format|
     if @post.update(post_params)
-      redirect_to root_path
+      redirect_to @post
+    else
+      render "edit"
     end
     #end
   end

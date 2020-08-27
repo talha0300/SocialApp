@@ -16,7 +16,7 @@
   <div class="form-group">
     <%= form.label :content ,class: "control-label col-sm-2"%>
     <div class="col-sm-7">
-      <%= form.text_area :content,class: "form-control",rows:"5" %>
+      <%= form.text_area :content,class: "form-control",rows:"5" ,required:true%>
     </div>
 
   </div>
@@ -24,7 +24,11 @@
   <div class="form-group">
 
       <%= form.label :image ,class:"control-label col-sm-2"%>
-      <%= form.file_field :image,class:"col-sm-7" %>
+      <% if form_type==="new"%>
+        <%= form.file_field :image,class:"col-sm-7",required:true %>
+      <%else%>
+        <%= form.file_field :image,class:"col-sm-7"%>
+      <% end %>
 
 
   </div>

@@ -20,7 +20,12 @@
               <%= link_to "Comments", post_path(post), :type => "button", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px'%>
             </div>
             <div class="">
-              <%= link_to "Like", post_likes_path(post, :action => 1), method: :post, :type => "button",:id => "like", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px'%>
+              <% if post.likes.exists?(:user_id => current_user[:id]) %>
+                <% liked = post.likes.find { |like| like.user_id == current_user.id} %>
+                <%= link_to "Liked", post_like_path(post,liked), method: :delete, :type => "button",:id => "like", :class => "btn", :style => 'padding-left: 10px',remote:true%>
+              <%else%>
+                <%= link_to "Like", post_likes_path(post, :action => 1), method: :post, :type => "button",:id => "like", :class => "btn", :style => 'padding-left: 10px',remote:true%>
+              <%end%>
               <span><%= "#{post.likes.count}" %></span>
             </div>
 

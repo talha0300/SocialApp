@@ -1,5 +1,7 @@
-$('#like').bind('ajax:success',function() {
+$('.btn').bind('ajax:success',function() {
   $(this).closest('div').find('span').html(<%= "#{@post.likes.count}" %>);
-
-  console.log("here");
+  $(this).closest('div').find('a').html("Liked");
+  $(this).attr("href", "posts/" + <%= "#{@post.id}" %>+"/likes/"+<%= "#{@like.id}" %>)
+  $(this).attr("data-method","delete")
+  
 });
