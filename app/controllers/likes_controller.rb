@@ -23,7 +23,7 @@ class LikesController < ApplicationController
       #format.json { head :no_content }
     end
 
-    #redirect_to session.delete(:return_to)
+    
 
   end
 

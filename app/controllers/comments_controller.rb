@@ -12,10 +12,7 @@ class CommentsController < ApplicationController
 
     @post = Post.find_by(id: params[:post_id])
     @comment = @post.comments.create(comment_params)
-    #do |comment|
-      #comment.user_id=current_user[:id]
-    #end
-    #debugger
+
     if @comment.save
       redirect_to post_path(@post)
 
@@ -34,15 +31,7 @@ class CommentsController < ApplicationController
     end
     #redirect_to post_path(@post)
   end
-=begin
-  def create
-    @post = Post.find(params[:post_id])
-    @comment = Comment.new(comment_params) do |comment|
-      comment.user = current_user
-    end
 
-  end
-=end
 
   private
     def comment_params
