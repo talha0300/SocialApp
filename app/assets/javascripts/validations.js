@@ -40,6 +40,27 @@ $(document).ready(function() {
                         message: 'The password must be more than 6 and less than 30 characters long'
                     }
                 }
+            },
+            'post[content]': {
+                //container: '#user[password_confirmation]Message',
+                validators: {
+                    notEmpty: {
+                        message: 'The content is required and cannot be empty'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 300,
+                        message: 'Max 300 charactors are allowed'
+                    }
+                }
+            },
+            'post[image]': {
+                //container: '#user[password_confirmation]Message',
+                validators: {
+                    notEmpty: {
+                        message: 'The image is required and cannot be empty'
+                    }
+                }
             }
         }
     });
