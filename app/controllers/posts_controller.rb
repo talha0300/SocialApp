@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @posts=Post.find(params[:id])
-    @check=@posts.likes.exists?(:user_id => current_user[:id])
+    #@check=@posts.likes.exists?(:user_id => current_user[:id])
     #debugger
     @posts=[@posts]
   end

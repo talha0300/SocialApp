@@ -11,7 +11,7 @@ $(document).ready(function() {
                 //container: '#user[email]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The email is required and cannot be empty'
+                        message: 'The email is required'
                     }
                 }
             },
@@ -19,7 +19,7 @@ $(document).ready(function() {
                 //container: '#user[password]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The password is required and cannot be empty'
+                        message: 'The password is required'
                     },
                     stringLength: {
                         min: 6,
@@ -32,7 +32,7 @@ $(document).ready(function() {
                 //container: '#user[password_confirmation]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The password is required and cannot be empty'
+                        message: 'The password is required'
                     },
                     stringLength: {
                         min: 6,
@@ -45,7 +45,7 @@ $(document).ready(function() {
                 //container: '#user[password_confirmation]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The content is required and cannot be empty'
+                        message: 'The content is required'
                     },
                     stringLength: {
                         min: 1,

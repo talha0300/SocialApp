@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     session[:return_to] ||= request.referer
     @post = Post.find(params[:post_id])
     @post.likes.create(user: current_user, post: @post)
-    @like = @post.likes.where(user: current_user, post: @post)[0]
+    @like = @post.likes.where(user: current_user, post: @post).first
     #debugger
     respond_to do |format|
       format.js
