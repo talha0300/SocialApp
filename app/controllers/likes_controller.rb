@@ -7,14 +7,7 @@ class LikesController < ApplicationController
   def create
     session[:return_to] ||= request.referer
     @post = Post.find(params[:post_id])
-    #@like = @post.likes.find(params[:id])
-    if @post.likes.where(user: current_user.id).present?
-        flash[:error] = "You've already upvoted this!"
-    elsif @post.likes.create(user: current_user, post: @post)
-        flash[:success] = "Upvoted!"
-    else
-        flash[:error] = "An error prevented you from upvoting."
-    end
+    @post.likes.create(user: current_user, post: @post)
     @like = @post.likes.where(user: current_user, post: @post)[0]
     #debugger
     respond_to do |format|
@@ -23,7 +16,7 @@ class LikesController < ApplicationController
       #format.json { head :no_content }
     end
 
-    
+
 
   end
 
