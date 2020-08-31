@@ -2,8 +2,10 @@ $('.btn').bind('ajax:success',function() {
 
   $(this).closest('div').find('span').html(<%= "#{@post.likes.count}" %>);
   $(this).closest('div').find('a').html("Like");
-
-  $(this).attr("href", "/posts/" + <%= "#{@post.id}" %>+"/likes")
+  var post_id = <%= "#{@post.id}" %>
+  //var like_id = <%= "#{@like.id}" %>
+  $(this).attr("href",  `/posts/${post_id}/likes`)
+  //$(this).attr("href", "/posts/" + <%= "#{@post.id}" %>+"/likes")
 
   $(this).attr("data-method","post")
   //console.log(var);
