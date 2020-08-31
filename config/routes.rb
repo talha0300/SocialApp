@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'followships/create'
+  get 'followships/destroy'
   #resources :comments
   resources :posts do
     resources :comments
