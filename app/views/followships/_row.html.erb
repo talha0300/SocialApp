@@ -1,0 +1,19 @@
+<div class="row" id="row">
+
+  <div class="col-xs-2">
+
+  </div>
+  <div class="col-xs-3 Followers-section">
+      <strong>User:</strong>
+      <%=@followship.user.email%>
+  </div>
+  <div class="col-xs-3 Followers-links">
+      <%=link_to "UnFollow",@followship, method: :delete,type:"button", class:"btn",remote:true%>
+  </div>
+  <div class="col-xs-4">
+
+  </div>
+
+
+
+</div>

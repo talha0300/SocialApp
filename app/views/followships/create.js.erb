@@ -1,0 +1,7 @@
+alert("there")
+$('.btnn').bind('ajax:success',function() {
+
+  $(this).closest('div').find('a').fadeOut();
+  $(this).closest('div').append("<span>Followed</span>")
+
+});

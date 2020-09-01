@@ -1,15 +1,29 @@
 class FollowshipsController < ApplicationController
   def create
-    @followship= Followship.new(params[:followship])
+    @followship= current_user.followships.build(followee_id: params[:followee_id],accepted: false)
     if @followship.save
-      redirect_to root_path
+      respond_to do |format|
+        format.js
+      end
+    else
+      redirect_to users_path
     end
   end
 
   def destroy
-    @followship= Followship.find(params[:id])
-    if @followship.destroy
-      redirect_to root_path
+    @followship= Followship.find_by_id(params[:id])
+    @followship.destroy
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
+  def update
+    @followship=Followship.find_by_id(params[:id])
+    @followship.update(accepted:true)
+    respond_to do |format|
+      format.js
     end
   end
 

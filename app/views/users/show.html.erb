@@ -1,2 +1,113 @@
 <%= @user.email %>
 <%= link_to "Change your password", edit_user_registration_path(@user) %>
+<div class="container">
+  <div class="Followees">
+    <h3>Followees</h3>
+
+      <% @user.followships.each do |followship|%>
+      <div class="row" id="row">
+        <%if followship.accepted === true%>
+          <div class="col-xs-2">
+
+          </div>
+          <div class="col-xs-3 Followees-section">
+            <strong>User:</strong>
+            <%=followship.followee.email%>
+          </div>
+          <div class="col-xs-3 Followees-links">
+            <%=link_to "UnFollow",followship, method: :delete,type:"button", class:"btn",remote:true%>
+          </div>
+          <div class="col-xs-4">
+
+          </div>
+        <%end%>
+      </div>
+      <%end%>
+
+  </div>
+
+
+  <div class="Pending-Followees">
+    <h3>Pending Followee's Requests </h3>
+
+      <% @user.followships.each do |followship|%>
+      <div class="row" id="row">
+        <%if followship.accepted != true%>
+          <div class="col-xs-2 ">
+
+          </div>
+          <div class="col-xs-3 Pending-Followees-section">
+            <strong>User:</strong>
+            <%=followship.followee.email%>
+          </div>
+          <div class="col-xs-3 Pending-Followees-links">
+            <%=link_to "UnFollow",followship, method: :delete,type:"button", class:"btn",remote:true%>
+          </div>
+          <div class="col-xs-4">
+
+          </div>
+
+      <%end%>
+    </div>
+    <%end%>
+
+  </div>
+
+  <div class="Followers">
+    <h3>Followers</h3>
+
+      <% @user.inverse_followships.each do |followship|%>
+        <div class="row" id="row">
+
+          <%if followship.accepted === true%>
+            <div class="col-xs-2">
+
+            </div>
+            <div class="col-xs-3 Followers-section">
+                <strong>User:</strong>
+              <%=followship.user.email%>
+            </div>
+            <div class="col-xs-3 Followers-links">
+              <%=link_to "UnFollow",followship, method: :delete,type:"button", class:"btn",remote:true%>
+            </div>
+            <div class="col-xs-4">
+
+            </div>
+
+          <%end%>
+        </div>
+      <%end%>
+
+  </div>
+
+  <div class="Pending-Followers">
+    <h3>Pending Follower's Requests </h3>
+
+      <% @user.inverse_followships.each do |followship|%>
+      <div class="row" id="row">
+        <%if followship.accepted != true%>
+        <div class="col-xs-2">
+
+        </div>
+        <div class="col-xs-3 Pending-Followers-section">
+            <strong>User:</strong>
+          <%=followship.user.email%>
+        </div>
+        <div class="col-xs-3 Pending-Followers-links">
+          <%= link_to "Accept",followship, method: :patch,type:"button", class:"btn",remote:true%>
+          <%= link_to "Reject",followship, method: :delete,type:"button", class:"btn",remote:true%>
+        </div>
+        <div class="col-xs-4">
+
+        </div>
+
+
+        <%end%>
+      </div>
+      <%end%>
+
+  </div>
+
+
+
+</div>
