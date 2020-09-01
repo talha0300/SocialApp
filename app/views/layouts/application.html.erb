@@ -18,6 +18,7 @@
       <% if user_signed_in? %>
       <%= link_to "Create A Post",new_post_path,:type => "button", :class => "btn btn-primary btn-sm","data-turbolinks" => "false"%>
         signed in as <%= link_to current_user.email, user_path(current_user.id) %> Not you <%= link_to "sign_out",destroy_user_session_path,:type => "button", :class => "btn btn-primary btn-sm"%>
+        <%= link_to "Notifications",notifications_path,:type => "button", :class => "btn btn-primary btn-sm"%>
       <% else %>
         <%= link_to "sign In",new_user_session_path, :type => "button", :class => "btn btn-primary btn-sm","data-turbolinks" => "false"%> Or <%= link_to "sign_up",new_user_registration_path,:type => "button", :class => "btn btn-primary btn-sm","data-turbolinks" => "false"%>
       <% end %>

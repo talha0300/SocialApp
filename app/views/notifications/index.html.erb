@@ -1,0 +1,7 @@
+<ul>
+  <% @notifications.each do |notification|%>
+    <% if notification.notification_type==="likes"%>
+      <li><%= link_to User.find(notification.actor_id).email,root_path%></li>
+    <%end%>
+  <%end%>
+</ul>
