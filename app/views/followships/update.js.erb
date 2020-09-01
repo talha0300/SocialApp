@@ -1,9 +1,9 @@
-alert("here is")
+
 $('.btn').bind('ajax:success',function() {
 
-  
-  $(this).closest('.row').fadeOut()
-  $('.Followers').append("<%= j render(:partial => 'row') %>")
+
+  $(this).closest('.record').fadeOut()
+  $('.Followers').append("<%= j render(:partial => 'follower') %>")
 
 
 

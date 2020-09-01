@@ -5,7 +5,7 @@
     <h3>Followees</h3>
 
       <% @user.followships.each do |followship|%>
-      <div class="row" id="row">
+      <div class="row record" id="row">
         <%if followship.accepted === true%>
           <div class="col-xs-2">
 
@@ -31,7 +31,7 @@
     <h3>Pending Followee's Requests </h3>
 
       <% @user.followships.each do |followship|%>
-      <div class="row" id="row">
+      <div class="row record" id="row">
         <%if followship.accepted != true%>
           <div class="col-xs-2 ">
 
@@ -57,7 +57,7 @@
     <h3>Followers</h3>
 
       <% @user.inverse_followships.each do |followship|%>
-        <div class="row" id="row">
+        <div class="row record" id="row">
 
           <%if followship.accepted === true%>
             <div class="col-xs-2">
@@ -84,7 +84,7 @@
     <h3>Pending Follower's Requests </h3>
 
       <% @user.inverse_followships.each do |followship|%>
-      <div class="row" id="row">
+      <div class="row record" id="row">
         <%if followship.accepted != true%>
         <div class="col-xs-2">
 
