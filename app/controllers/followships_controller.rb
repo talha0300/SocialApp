@@ -12,18 +12,24 @@ class FollowshipsController < ApplicationController
 
   def destroy
     @followship= Followship.find_by_id(params[:id])
-    @followship.destroy
-    respond_to do |format|
-      format.js
+    if @followship.destroy
+      respond_to do |format|
+        format.js
+      end
+    else
+      redirect_to current_user
     end
   end
 
 
   def update
     @followship=Followship.find_by_id(params[:id])
-    @followship.update(accepted:true)
-    respond_to do |format|
-      format.js
+    if @followship.update(accepted:true)
+      respond_to do |format|
+        format.js
+      end
+    else
+      redirect_to current_user
     end
   end
 
