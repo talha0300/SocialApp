@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //alert("called");
-    $('#fieldContainerForm').bootstrapValidator({
+    $('#fieldContainerForm,#field-container-form').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
