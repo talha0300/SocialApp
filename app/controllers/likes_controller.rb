@@ -15,8 +15,10 @@ class LikesController < ApplicationController
       #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       #format.json { head :no_content }
     end
-    @notification=Notification.new(user_id:@post.user.id,actor_id:current_user.id,notification_type:params[:controller],target_type:"posts",target_id:@post[:id])
-    @notification.save
+    if @post[:user_id] != current_user.id
+      @notification=Notification.new(user_id:@post.user.id,actor_id:current_user.id,notification_type:params[:controller],target_type:"posts",target_id:@post[:id])
+      @notification.save
+    end
 
 
 

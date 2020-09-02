@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   #post 'followships/create'
   #post 'followships/destroy'
   resources:followships,only: [:create,:destroy,:update]
-  resources:notifications,only:[:index,:create,:show,:destroy]
+  resources:notifications,only:[:index,:show,:destroy]
   #patch '/followships/accept' => 'followships#accept'
   #resources :comments
   resources :posts do
