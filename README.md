@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is Demo Social Media App which is built with Ruby on Rails.
+To Run the project locally,first clone the project in your local
+computer,go inside the parent directory and run these two commands
 
-Things you may want to cover:
+$ Bundle install
+$ rails server
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Note: Rails version 5.2 is required
