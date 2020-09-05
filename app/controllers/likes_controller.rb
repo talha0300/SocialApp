@@ -9,15 +9,15 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.likes.create(user: current_user, post: @post)
     @like = @post.likes.where(user: current_user, post: @post).first
-    #debugger
+
     respond_to do |format|
       format.js
       #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       #format.json { head :no_content }
     end
     if @post[:user_id] != current_user.id
-      @notification=Notification.new(user_id:@post.user.id,actor_id:current_user.id,notification_type:params[:controller],target_type:"posts",target_id:@post[:id])
-      @notification.save
+      Notification.create_notification(user_id:@post.user.id,actor_id:current_user.id,notification_type:params[:controller],target_type:"posts",target_id:@post[:id])
+
     end
 
 
@@ -25,7 +25,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    #session[:return_to] ||= request.referer
+    
 
     @like.destroy
     respond_to do |format|
@@ -33,8 +33,8 @@ class LikesController < ApplicationController
       #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       #format.json { head :no_content }
     end
-    #redirect_to session.delete(:return_to)
-    #redirect_to post_path(@post)
+
+
   end
 
   private

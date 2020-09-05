@@ -5,8 +5,8 @@ class FollowshipsController < ApplicationController
       respond_to do |format|
         format.js
       end
-      @notification=Notification.new(user_id:@followship.followee_id,actor_id:@followship.user_id,notification_type:params[:controller],target_type:"follow",target_id:@followship.followee_id)
-      @notification.save
+      Notification.create_notification(user_id:@followship.followee_id,actor_id:@followship.user_id,notification_type:params[:controller],target_type:"follow",target_id:@followship.followee_id)
+
     else
       redirect_to users_path
     end
@@ -19,11 +19,11 @@ class FollowshipsController < ApplicationController
         format.js
       end
       if @followship.user_id != current_user.id
-        @notification=Notification.new(user_id:@followship.user_id,actor_id:@followship.followee_id,notification_type:params[:controller],target_type:"unfollow",target_id:@followship.followee_id)
-        @notification.save
+        Notification.create_notification(user_id:@followship.user_id,actor_id:@followship.followee_id,notification_type:params[:controller],target_type:"unfollow",target_id:@followship.followee_id)
+
       elsif @followship.user_id === current_user.id && @followship.accepted
-        @notification=Notification.new(user_id:@followship.followee_id,actor_id:@followship.user_id,notification_type:params[:controller],target_type:"unfollow",target_id:@followship.followee_id)
-        @notification.save
+        Notification.create_notification(user_id:@followship.followee_id,actor_id:@followship.user_id,notification_type:params[:controller],target_type:"unfollow",target_id:@followship.followee_id)
+
       end
     else
       redirect_to current_user
@@ -37,8 +37,8 @@ class FollowshipsController < ApplicationController
       respond_to do |format|
         format.js
       end
-      @notification=Notification.new(user_id:@followship.user_id,actor_id:@followship.followee_id,notification_type:params[:controller],target_type:"follow_acceptance",target_id:@followship.followee_id)
-      @notification.save
+      Notification.create_notification(user_id:@followship.user_id,actor_id:@followship.followee_id,notification_type:params[:controller],target_type:"follow_acceptance",target_id:@followship.followee_id)
+      
     else
       redirect_to current_user
     end
