@@ -25,13 +25,12 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    
+
 
     @like.destroy
     respond_to do |format|
       format.js
-      #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      #format.json { head :no_content }
+    
     end
 
 

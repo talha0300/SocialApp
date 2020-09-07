@@ -1,13 +1,13 @@
 <ol>
   <% @notifications.each do |notification|%>
-    <% if notification.notification_type==="likes"%>
+    <% if notification.notification_type===Notification.NOTIFICATION_TYPES[:LIKES] %>
       <div class="notification">
         <span><strong>like's Notification</strong></span>
         <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" liked your post",path:post_path(notification.target_id)}%>
         <%= render partial:"notifications_links", locals:{notification:notification} %></li>
       </div>
-      
-    <% elsif notification.notification_type==="comments" %>
+
+    <% elsif notification.notification_type===Notification.NOTIFICATION_TYPES[:COMMENTS] %>
 
 
       <div class="notification">
@@ -16,7 +16,7 @@
         <%= render partial:"notifications_links", locals:{notification:notification} %></li>
       </div>
 
-    <%elsif notification.target_type==="follow"%>
+    <%elsif notification.target_type===Notification.NOTIFICATION_TYPES[:FOLLOW]%>
     <div class="notification">
       <span><strong>Follow's Notification</strong></span>
       <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" sent a follow request",path:current_user}%>
@@ -24,14 +24,14 @@
     </div>
 
 
-    <%elsif notification.target_type==="unfollow"%>
+    <%elsif notification.target_type===Notification.NOTIFICATION_TYPES[:UNFOLLOW]%>
     <div class="notification">
       <span><strong>Follow's Notification</strong></span>
       <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" unfollowed you",path:current_user}%>
         <%= render partial:"notifications_links", locals:{notification:notification} %></li>
     </div>
 
-    <%elsif notification.target_type==="follow_acceptance"%>
+    <%elsif notification.target_type===Notification.NOTIFICATION_TYPES[:ACCEPTANCE]%>
       <div class="notification">
         <span><strong>Follow's Notification</strong></span>
         <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" accepted your follow request",path:current_user}%>
