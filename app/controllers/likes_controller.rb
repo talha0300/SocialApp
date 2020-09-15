@@ -16,7 +16,8 @@ class LikesController < ApplicationController
       #format.json { head :no_content }
     end
     if @post[:user_id] != current_user.id
-      Notification.create_notification(user_id:@post.user.id,actor_id:current_user.id,notification_type:params[:controller],target_type:"posts",target_id:@post[:id])
+      Notification.notifications_creator(post:@post,params:params,type:"post",actor:current_user)
+
 
     end
 
@@ -30,7 +31,7 @@ class LikesController < ApplicationController
     @like.destroy
     respond_to do |format|
       format.js
-    
+
     end
 
 

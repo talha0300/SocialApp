@@ -1,42 +1,26 @@
 <ol>
   <% @notifications.each do |notification|%>
-    <% if notification.notification_type===Notification.NOTIFICATION_TYPES[:LIKES] %>
-      <div class="notification">
-        <span><strong>like's Notification</strong></span>
-        <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" liked your post",path:post_path(notification.target_id)}%>
-        <%= render partial:"notifications_links", locals:{notification:notification} %></li>
-      </div>
-
-    <% elsif notification.notification_type===Notification.NOTIFICATION_TYPES[:COMMENTS] %>
+    <% if notification.notification_type===Notification::TYPES[:LIKES] %>
+      <%= render partial:'notification',locals:{type:Notification::TYPES[:LIKES],notification:notification,path:post_path(notification.target_id)}%>
 
 
-      <div class="notification">
-        <span><strong>Comment's Notification</strong></span>
-        <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" left a comment on your post",path:post_path(notification.target_id)}%>
-        <%= render partial:"notifications_links", locals:{notification:notification} %></li>
-      </div>
-
-    <%elsif notification.target_type===Notification.NOTIFICATION_TYPES[:FOLLOW]%>
-    <div class="notification">
-      <span><strong>Follow's Notification</strong></span>
-      <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" sent a follow request",path:current_user}%>
-      <%= render partial:"notifications_links", locals:{notification:notification} %></li>
-    </div>
+    <% elsif notification.notification_type===Notification::TYPES[:COMMENTS] %>
+      <%= render partial:'notification',locals:{type:Notification::TYPES[:COMMENTS],notification:notification,path:post_path(notification.target_id)}%>
 
 
-    <%elsif notification.target_type===Notification.NOTIFICATION_TYPES[:UNFOLLOW]%>
-    <div class="notification">
-      <span><strong>Follow's Notification</strong></span>
-      <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" unfollowed you",path:current_user}%>
-        <%= render partial:"notifications_links", locals:{notification:notification} %></li>
-    </div>
 
-    <%elsif notification.target_type===Notification.NOTIFICATION_TYPES[:ACCEPTANCE]%>
-      <div class="notification">
-        <span><strong>Follow's Notification</strong></span>
-        <li><%= render partial:'link_to_notification', locals:{notification:notification,message:" accepted your follow request",path:current_user}%>
-        <%= render partial:"notifications_links", locals:{notification:notification} %></li>
-      </div>
+    <%elsif notification.target_type===Notification::TYPES[:FOLLOW]%>
+      <%= render partial:'notification',locals:{type:Notification::TYPES[:FOLLOW],notification:notification,path:current_user}%>
+
+
+
+    <%elsif notification.target_type===Notification::TYPES[:UNFOLLOW]%>
+    <%= render partial:'notification',locals:{type:Notification::TYPES[:UNFOLLOW],notification:notification,path:current_user}%>
+
+
+    <%elsif notification.target_type===Notification::TYPES[:ACCEPTANCE]%>
+      <%= render partial:'notification',locals:{type:Notification::TYPES[:ACCEPTANCE],notification:notification,path:current_user}%>
+      
 
 
     <%end%>

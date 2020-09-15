@@ -15,7 +15,8 @@ class CommentsController < ApplicationController
 
     if @comment.save
       if @post[:user_id] != current_user.id
-        Notification.create_notification({user_id:@post.user.id,actor_id:current_user.id,notification_type:params[:controller],target_type:"posts",target_id:@post[:id]})
+        Notification.notifications_creator(post:@post,params:params,type:"post",actor:current_user)
+        
 
       end
       redirect_to post_path(@post)
@@ -33,7 +34,7 @@ class CommentsController < ApplicationController
       #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       #format.json { head :no_content }
     end
-    
+
   end
 
 

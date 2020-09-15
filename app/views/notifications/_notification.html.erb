@@ -1,0 +1,10 @@
+
+<div class="notification">
+  <% message=Notification::TYPES.key(type)%>
+  <span><strong><%= "#{type} Notifications"%></strong></span>
+  
+  <li><%= render partial:'link_to_notification', locals:{notification:notification,
+      message:Notification::MESSAGES[message],path:path}%>
+
+  <%= render partial:"notifications_links", locals:{notification:notification} %></li>
+</div>

@@ -5,7 +5,8 @@ class FollowshipsController < ApplicationController
       respond_to do |format|
         format.js
       end
-      Notification.create_notification(user_id:@followship.followee_id,actor_id:@followship.user_id,notification_type:params[:controller],target_type:"follow",target_id:@followship.followee_id)
+
+      Notification.notifications_creator(followship:@followship,params:params,type:"reverse_followship")
 
     else
       redirect_to users_path
@@ -19,10 +20,12 @@ class FollowshipsController < ApplicationController
         format.js
       end
       if @followship.user_id != current_user.id
-        Notification.create_notification(user_id:@followship.user_id,actor_id:@followship.followee_id,notification_type:params[:controller],target_type:"unfollow",target_id:@followship.followee_id)
+        Notification.notifications_creator(followship:@followship,params:params,type:"followship")
+
 
       elsif @followship.user_id === current_user.id && @followship.accepted
-        Notification.create_notification(user_id:@followship.followee_id,actor_id:@followship.user_id,notification_type:params[:controller],target_type:"unfollow",target_id:@followship.followee_id)
+        Notification.notifications_creator(followship:@followship,params:params,type:"reverse_followship")
+
 
       end
     else
@@ -37,8 +40,9 @@ class FollowshipsController < ApplicationController
       respond_to do |format|
         format.js
       end
-      Notification.create_notification(user_id:@followship.user_id,actor_id:@followship.followee_id,notification_type:params[:controller],target_type:"follow_acceptance",target_id:@followship.followee_id)
+      Notification.notifications_creator(followship:@followship,params:params,type:"followship")
       
+
     else
       redirect_to current_user
     end
