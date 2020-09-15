@@ -4,7 +4,7 @@ $('.btn').bind('ajax:success',function() {
   var post_id = <%= "#{@post.id}" %>
   var like_id = <%= "#{@like.id}" %>
   $(this).attr("href",  `/posts/${post_id}/likes/${like_id}`)
-  //$(this).attr("href", "/posts/" + <%= "#{@post.id}" %>+"/likes/"+<%= "#{@like.id}" %>)
+  
   $(this).attr("data-method","delete")
 
 });
