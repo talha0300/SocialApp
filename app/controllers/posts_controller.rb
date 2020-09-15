@@ -12,8 +12,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @posts=Post.find(params[:id])
-    #@check=@posts.likes.exists?(:user_id => current_user[:id])
-    #debugger
     @posts=[@posts]
   end
 
@@ -65,6 +63,7 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+    Notification.destroy_notifications(@post)
   end
 
   private
@@ -74,8 +73,7 @@ class PostsController < ApplicationController
     end
 
     def set_posts
-      #current=current_user[:id]
-      #string='user_id=#{current_user[:id]}
+
       @posts = Post.where("user_id=#{current_user[:id]}")
     end
 
