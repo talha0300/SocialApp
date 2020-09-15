@@ -32,13 +32,7 @@
         <td><%= link_to "Comments", post_path(post) %></td>
         <td><%= link_to "Like", post_likes_path(post, :action => 1), method: :post %>
           <%= "#{post.likes.count}" %></td>
-        <!--
-          <td><%= post.content %></td>
-          <td><%= image_tag(post.image,:class => "img-responsive")%></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        -->
+        
       </tr>
     <% end %>
   </tbody>

@@ -5,15 +5,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    #@posts = Post.all
+
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
     @posts=Post.find(params[:id])
-    #@check=@posts.likes.exists?(:user_id => current_user[:id])
-    #debugger
     @posts=[@posts]
   end
 
@@ -34,7 +32,7 @@ class PostsController < ApplicationController
       post.user = current_user
       post.attachment=""
     end
-    #debugger
+    
     if @post.save
       redirect_to post_path(@post)
     else
@@ -47,13 +45,13 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
 
-    #respond_to do |format|
+
     if @post.update(post_params)
       redirect_to @post
     else
       render "edit"
     end
-    #end
+
   end
 
   # DELETE /posts/1
@@ -74,8 +72,7 @@ class PostsController < ApplicationController
     end
 
     def set_posts
-      #current=current_user[:id]
-      #string='user_id=#{current_user[:id]}
+
       @posts = Post.where("user_id=#{current_user[:id]}")
     end
 
