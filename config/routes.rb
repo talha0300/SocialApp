@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :likes, only: [:create, :destroy]
   end
-  devise_for :users
+  devise_for :users,controllers: { confirmations: 'confirmations' }
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
