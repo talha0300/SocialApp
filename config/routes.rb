@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  #post 'followships/create'
-  #post 'followships/destroy'
-  resources:followships,only: [:create,:destroy,:update]
 
-  #patch '/followships/accept' => 'followships#accept'
-  #resources :comments
+  resources:followships,only: [:create,:destroy,:update]
+  resources:notifications,only:[:index,:show,:destroy]
+
   resources :posts do
     resources :comments
     resources :likes, only: [:create, :destroy]
@@ -15,7 +13,7 @@ Rails.application.routes.draw do
   end
 
 
-  # or
+  
   resources :users, only: [:show,:index]
 
   get 'home/index'

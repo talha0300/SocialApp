@@ -14,6 +14,11 @@ class LikesController < ApplicationController
       format.js
 
     end
+    if @post[:user_id] != current_user.id
+      Notification.notifications_creator(post:@post,params:params,type:"post",actor:current_user)
+
+
+    end
 
 
 

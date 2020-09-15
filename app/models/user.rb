@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many:notifications
   has_many :posts
   has_many :followships
   has_many :followees, through: :followships
