@@ -1,0 +1,7 @@
+
+$('.btnn').bind('ajax:success',function() {
+  
+  $(this).fadeOut();
+  $(this).closest('.follow-option').find('.followed').html("Followed")
+
+});

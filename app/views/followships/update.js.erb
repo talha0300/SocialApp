@@ -1,0 +1,10 @@
+
+$('.btn').bind('ajax:success',function() {
+
+
+  $(this).closest('.record').fadeOut()
+  $('.Followers').append("<%= j render(:partial => 'follower') %>")
+
+
+
+});

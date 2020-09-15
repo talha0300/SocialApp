@@ -9,11 +9,10 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.likes.create(user: current_user, post: @post)
     @like = @post.likes.where(user: current_user, post: @post).first
-    #debugger
+
     respond_to do |format|
       format.js
-      #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      #format.json { head :no_content }
+
     end
 
 
@@ -21,16 +20,17 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    #session[:return_to] ||= request.referer
 
-    @like.destroy
-    respond_to do |format|
-      format.js
-      #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      #format.json { head :no_content }
+    if @like
+      @like.destroy
+      respond_to do |format|
+        format.js
+
+      end
+    else
+      not_found
     end
-    #redirect_to session.delete(:return_to)
-    #redirect_to post_path(@post)
+
   end
 
   private
@@ -39,6 +39,10 @@ class LikesController < ApplicationController
     end
     def find_like
       @post = Post.find(params[:post_id])
-      @like = @post.likes.find(params[:id])
+      if @post
+        @like = @post.likes.find(params[:id])
+      else
+        not_found
+      end
     end
 end
