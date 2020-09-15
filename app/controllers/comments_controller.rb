@@ -8,16 +8,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-
-
     @post = Post.find_by(id: params[:post_id])
-    @comment = @post.comments.create(comment_params)
+    if @post
+      @comment = @post.comments.create(comment_params)
+      if @comment.save
+        redirect_to post_path(@post)
 
-    if @comment.save
-      redirect_to post_path(@post)
-
+      else
+        render "new"
+      end
     else
-      render "new"
+      not_found
     end
   end
   def destroy
@@ -26,10 +27,8 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.js
-      #format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      #format.json { head :no_content }
+      
     end
-    #redirect_to post_path(@post)
   end
 
 

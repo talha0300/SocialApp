@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  #post 'followships/create'
+  #post 'followships/destroy'
+  resources:followships,only: [:create,:destroy,:update]
+
+  #patch '/followships/accept' => 'followships#accept'
   #resources :comments
   resources :posts do
     resources :comments
@@ -8,6 +13,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+
+
+  # or
+  resources :users, only: [:show,:index]
+
   get 'home/index'
   root 'home#index'
 
