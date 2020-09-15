@@ -1,0 +1,10 @@
+
+<% if cont != "AllPosts"  %>
+  <div class="container">
+    <div class="" style="display: flex; flex-direction: row;justify-content: space-around;padding-top:30px">
+    <%= link_to 'Show', @post ,style:'color:blue'%>
+    <%= link_to 'Edit', edit_post_path(@post) ,style:'color:green'%>
+    <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } ,style:'color:red',remote: true,class:"delete"%>
+    </div>
+  </div>
+<% end %>
