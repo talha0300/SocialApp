@@ -91,9 +91,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.consider_all_requests_local  = true
 
-
-  config.action_mailer.default_url_options = { host: 'aqueous-sierra-94981.herokuapp.com', protocol: 'http' }
+  config.action_mailer.default_url_options = { host: 'mighty-tor-08415.herokuapp.com', protocol: 'http' }
   config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.perform_deliveries = true
 end
