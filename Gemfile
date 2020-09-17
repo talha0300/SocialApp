@@ -66,6 +66,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'letter_opener_web'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
