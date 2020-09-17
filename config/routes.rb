@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get 'home/index'
   root 'home#index'
-  mount LetterOpenerWeb::Engine, at: "/inbox"
+  namespace :inbox do
+    mount LetterOpenerWeb::Engine => '/letter_opener'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

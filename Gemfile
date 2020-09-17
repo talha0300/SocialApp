@@ -54,6 +54,7 @@ group :development do
   gem 'pry', '~> 0.12.2'
   gem "letter_opener"
   gem 'sqlite3'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do
@@ -66,7 +67,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'letter_opener_web'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
