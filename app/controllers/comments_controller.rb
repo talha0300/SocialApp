@@ -4,12 +4,15 @@ class CommentsController < ApplicationController
 
   end
   def new
-    @post = Post.find_by_id(params[:post_id])
+    @post = Post.find_by(id:params[:post_id])
+    if !@post
+      not_found
+    end
   end
 
   def create
     @post = Post.find_by(id: params[:post_id])
-    if @post
+    if @post.present?
         @comment = @post.comments.create(comment_params)
         if @comment.save
           redirect_to post_path(@post)

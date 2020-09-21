@@ -11,7 +11,7 @@ $(document).ready(function() {
                 //container: '#user[email]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The email is required'
+                        message: 'Email is required'
                     }
                 }
             },
@@ -19,12 +19,12 @@ $(document).ready(function() {
                 //container: '#user[password]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The password is required'
+                        message: 'Password is required'
                     },
                     stringLength: {
                         min: 6,
                         max: 30,
-                        message: 'The password must be more than 6 and less than 30 characters long'
+                        message: 'Password must be more than 6 and less than 30 characters long'
                     }
                 }
             },
@@ -32,12 +32,12 @@ $(document).ready(function() {
                 //container: '#user[password_confirmation]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The password is required'
+                        message: 'Password is required'
                     },
                     stringLength: {
                         min: 6,
                         max: 30,
-                        message: 'The password must be more than 6 and less than 30 characters long'
+                        message: 'Password must be more than 6 and less than 30 characters long'
                     }
                 }
             },
@@ -45,7 +45,7 @@ $(document).ready(function() {
                 //container: '#user[password_confirmation]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The content is required'
+                        message: 'Content is required'
                     },
                     stringLength: {
                         min: 1,
@@ -58,7 +58,7 @@ $(document).ready(function() {
                 //container: '#user[password_confirmation]Message',
                 validators: {
                     notEmpty: {
-                        message: 'The image is required and cannot be empty'
+                        message: 'Image is required and cannot be empty'
                     }
                 }
             }
