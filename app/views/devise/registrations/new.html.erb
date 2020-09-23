@@ -1,0 +1,45 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),:html => {:class => 'form-horizontal',:id => "fieldContainerForm"}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="form-group">
+    <%= f.label :email,class:"control-label col-sm-2" %>
+    <div class="col-sm-6">
+      <%= f.email_field :email,class:"form-control", autofocus: true, autocomplete: "email",placeholder:"Enter email"%>
+      <span class="help-block" id="user[email]Message"></span>
+
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password ,class:"control-label col-sm-2" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <div class="col-sm-6">
+      <%= f.password_field :password,class:"form-control", autocomplete: "new-password",placeholder:"Enter Password" %>
+      <span class="help-block" id="user[password]Message"></span>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation ,class:"control-label col-sm-2" %>
+    <div class="col-sm-6">
+        <%= f.password_field :password_confirmation,class:"form-control", autocomplete: "new-password",placeholder:"Re-enter Password"  %>
+        <span class="help-block" id="user[password_confirmation]Message"></span>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-6",style='background-color:green;'>
+        <%= f.submit "Sign Up"%>
+    </div>
+
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

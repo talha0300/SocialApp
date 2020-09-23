@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Comments</h2>
+  <% @post.comments.each do |comment| %>
+
+  <section>
+
+
+  <div class="row">
+
+    <div class="col-xs-2"></div>
+    <div class="col-xs-1">
+
+      <strong>Comment:</strong>
+    </div>
+    <div class="col-xs-4">
+      <%= comment.body %>
+    </div>
+    <div class="col-xs-2">
+      <strong>Commentor:</strong>
+      <%= comment.user.email %>
+    </div>
+    <div class="col-xs-1">
+      <% if current_user[:id]===comment[:user_id]%>
+
+      <%= link_to 'Destroy Comment', [comment.post, comment],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' },:class => "delete" ,remote:true%>
+    <% end %>
+    </div>
+
+    <div class="col-xs-2"></div>
+  </div>
+  </section>
+  <% end %>
+
+</div>

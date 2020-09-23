@@ -1,0 +1,28 @@
+<ol>
+  <% @notifications.each do |notification|%>
+    <% if notification.notification_type===Notification::TYPES[:LIKES] %>
+      <%= render partial:'notification',locals:{type:Notification::TYPES[:LIKES],notification:notification,path:post_path(notification.target_id)}%>
+
+
+    <% elsif notification.notification_type===Notification::TYPES[:COMMENTS] %>
+      <%= render partial:'notification',locals:{type:Notification::TYPES[:COMMENTS],notification:notification,path:post_path(notification.target_id)}%>
+
+
+
+    <%elsif notification.target_type===Notification::TYPES[:FOLLOW]%>
+      <%= render partial:'notification',locals:{type:Notification::TYPES[:FOLLOW],notification:notification,path:current_user}%>
+
+
+
+    <%elsif notification.target_type===Notification::TYPES[:UNFOLLOW]%>
+    <%= render partial:'notification',locals:{type:Notification::TYPES[:UNFOLLOW],notification:notification,path:current_user}%>
+
+
+    <%elsif notification.target_type===Notification::TYPES[:ACCEPTANCE]%>
+      <%= render partial:'notification',locals:{type:Notification::TYPES[:ACCEPTANCE],notification:notification,path:current_user}%>
+      
+
+
+    <%end%>
+  <%end%>
+</ol>

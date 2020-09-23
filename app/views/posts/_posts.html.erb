@@ -1,0 +1,55 @@
+
+<div class="container">
+  <% @posts.each do |post| %>
+    <section>
+
+
+    <div class="row" style="background-color:lightcyan;" id="row">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8">
+        <figure class="figure">
+        <%= link_to image_tag(post.image,:class => "figure-img img-fluid z-depth-1",:style => "max-width: 700px;"),post_path(post)%>
+        <figcaption class="figure-caption" style="max-width: 400px"><%= post.content %></figcaption>
+        <figcaption class="figure-caption text-right"><strong>Created BY:</strong><%= post.user.email %></figcaption>
+        <figcaption class="figure-caption">
+          <div class="d-flex justify-content-around" style="display: flex;flex-direction: row;justify-content: space-around">
+            <div>
+              <%= link_to "Add Comment", new_post_comment_path(post), :type => "button", :class => "btn btn-primary btn-sm" %>
+            </div>
+            <div class="">
+              <%= link_to "Comments", post_path(post), :type => "button", :class => "btn btn-primary btn-sm", :style => 'padding-left: 10px'%>
+            </div>
+            <div class="">
+              <% if post.likes.exists?(:user_id => current_user[:id]) %>
+                <% liked = post.likes.find { |like| like.user_id == current_user.id} %>
+                <%= link_to "Liked", post_like_path(post,liked), method: :delete, :type => "button",:id => "like", :class => "btn like-btn", :style => 'padding-left: 10px',remote:true%>
+              <%else%>
+                <%= link_to "Like", post_likes_path(post), method: :post, :type => "button",:id => "like", :class => "btn like-link", :style => 'padding-left: 10px',remote:true%>
+              <%end%>
+              <span class="likes-counter"><%= "#{post.likes.count}" %></span>
+            </div>
+
+          </div>
+
+
+        </figcaption>
+
+
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
+    <div class="row" style="background-color:lightcyan;">
+
+    </div>
+    <br />
+    <%@post=post%>
+    <%= render 'comments/comments' %>
+
+    <%if post.user.email===current_user.email%>
+      <%= render 'posts/posts_links',cont: temp  %>
+    <%end%>
+    </section>
+    <br />
+  <% end %>
+
+</div>
